@@ -1,1 +1,2 @@
-export { default as App } from './App.jsx';
+// LoginView
+export { default as LoginView } from './LoginView.jsx';

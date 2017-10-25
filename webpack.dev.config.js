@@ -68,23 +68,41 @@ module.exports = {
                 loader: 'html-loader',
             },{
                 test: /\.css$/,
-                include: path.resolve(__dirname, 'node_modules'),
-                use: 'css-loader'
+                use: [
+                  'style-loader',
+                  'css-loader'
+                ]
             },{
                 test: /\.scss$/,
-                include: path.resolve(__dirname, './'),
-                use: [{
+                include: path.resolve(__dirname, 'src/component'),
+                use: [
+                  'style-loader',
+                  {
                     loader: 'css-loader',
                     options: {
                         modules: true,
                         importLoaders: 1,
                         localIdentName:'[local]___[hash:base64:5]'
                     }
-                },{
-                    loader: 'postcss-loader',
-                    options: PostCss
-                }]
+                  },{
+                      loader: 'postcss-loader',
+                      options: PostCss
+                  }
+                ]
             },{
+                test: /\.scss$/,
+                include: path.resolve(__dirname, 'src/styles'),
+                use: [
+                  'style-loader',
+                  'css-loader',
+                  {
+                    loader: 'postcss-loader',
+                    options: {
+                      parser: 'postcss-scss'
+                    }
+                  }
+                ]
+          },{
               test: /\.(png|jpg|gif|svg|eot|ttf|woff|woff2)$/,
               loader: 'url-loader',
               options: {

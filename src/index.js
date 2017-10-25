@@ -3,37 +3,25 @@ import { AppContainer as HotReloader } from 'react-hot-loader';
 import React from 'react';
 import { render } from 'react-dom';
 import RedBox from 'redbox-react';
+import { HashRouter, BrowserRouter, Link, Route, Redirect, Switch, withRouter, Prompt } from 'react-router-dom';
 
-import { 
-  HashRouter, 
-  BrowserRouter, 
-  Link, 
-  Route, 
-  Redirect, 
-  Switch,
-  withRouter, 
-  Prompt 
-} from 'react-router-dom';
+import { LoginView } from './containers';
 
-const Main = () => (
-  <h2>Main</h2>
-)
-const User = ({match}) => (
-  <h2>{match.params.userID}</h2>
-)
+
+import 'styles/normalize.scss'
+import 'styles/antd.css'
+import 'styles/login-view.scss'
+
+
 const PrimaryLayout = props => {
   return (
-    <div className="primary-layout">
-      <Link to='/'>main</Link> 
-      <span>          </span>
-      <Link to='/xxxxxxxxxx'>user</Link>
-      <main>
-        <Switch>
-          <Route path="/" exact component={Main} />
-          <Route path="/:userID" exact component={User} />
-          <Redirect to="/" />
-        </Switch>
-      </main>
+    <div>
+      <Switch>
+        <Route path="/" exact component={LoginView} />
+        <Route path="/:userID" exact component={LoginView} />
+        <Route path="/login" exact component={LoginView} />
+        <Redirect to="/" />
+      </Switch>
     </div>
   );
 };
