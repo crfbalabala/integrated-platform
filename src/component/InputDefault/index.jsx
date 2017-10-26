@@ -8,8 +8,9 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      placeholder: this.props.data.placeholder,
-      type:'text',
+      placeholder: this.props.data.placeholder || '',
+      type: this.props.data.type || 'text', 
+      iconType: this.props.data.iconType || '',
       value:''
     };
 
@@ -22,21 +23,22 @@ export default class App extends React.Component {
     });
   }
   onChangeUserName = (e) => {
-    
+
     this.setState({ 
       value: e.target.value 
     });
-
+    
     this.props.data.changePrice(e.target.value)
 
   }
   render() {
-    const { value } = this.state;
+    const { value, type, iconType, placeholder } = this.state;
     const suffix = value ? <Icon type="close-circle" onClick={this.emitEmpty} /> : null;
     return (
       <Input
-        placeholder={this.state.placeholder}
-        prefix={<Icon type="user" />}
+        type={type}
+        placeholder={placeholder}
+        prefix={<Icon type={iconType} />}
         suffix={suffix}
         value={value}
         onChange={this.onChangeUserName}
