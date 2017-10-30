@@ -8,3 +8,7 @@ export { default as InputPicCode } from './InputPicCode/index.jsx';
 
 export { default as WeChatLogin } from './WeChatLogin/index.jsx';
 
+export { default as LeftBars } from './LeftBars/index.jsx';
+
+
+

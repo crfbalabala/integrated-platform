@@ -11,9 +11,6 @@ export default class HeadNav extends Component {
             <div className={styles.headnav}>
               <Link to='/'><span className={styles.headlogo}></span></Link> 
               <span className={styles.headtitle}>综合业务运营平台</span>
-              <div>
-                <span>登录</span><span>登出</span>
-              </div>
             </div>
         )
     }

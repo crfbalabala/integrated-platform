@@ -5,7 +5,7 @@ import { render } from 'react-dom';
 import RedBox from 'redbox-react';
 import { HashRouter, BrowserRouter, Link, Route, Redirect, Switch, withRouter, Prompt } from 'react-router-dom';
 
-import { LoginView, HomeView } from './containers';
+import { LoginView, HomeView, NotFoundView } from './containers';
 
 
 import 'styles/normalize.scss'
@@ -22,8 +22,9 @@ const PrimaryLayout = props => {
   return (
     <div>
       <Switch>
-        <Route path="/" exact component={HomeView} />
+        <Route path="/main/:tabIndex" exact component={HomeView} />
         <Route path="/login" exact component={LoginView} />
+        <Route path="/*" component={NotFoundView} />
       </Switch>
     </div>
   );
